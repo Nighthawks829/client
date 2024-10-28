@@ -1,0 +1,60 @@
+.navbar-brand{
+    font-weight: 500;
+}
+.profile-picture {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    outline: 3px solid white; /* Add the white border outside */
+
+    /* border-width: 3px;
+    border-color: white;
+    border-style: solid; */
+}
+
+.profile-name {
+    font-weight: 500;
+}
+
+.date-text {
+    font-size: 12px;
+}
+
+.card-hover {
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.card-hover:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #f0f0f0;
+    /* Gray background */
+}
+
+.add-button{
+    font-size: 48px;
+    /* color: green; */
+}
+
+.fixed-icon {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    background-color: #fff;
+    border-radius: 50%;
+    /* border-style: solid; */
+    /* border-width: 1px; */
+    /* border-color: black; */
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.fixed-icon:hover {
+    background-color: #e0e0e0; /* Light gray */
+  }
+
+/* .updated-icon{
+    color: red;
+} */
