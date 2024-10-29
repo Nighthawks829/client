@@ -21,7 +21,7 @@ function LoginPage() {
         <h1 className="login-text mt-5 text-center display-5">Login</h1>
 
         <form className="mt-4" onSubmit={handleSubmit}>
-          <div className="mt-3 mb-4">
+          <div className="mt-4 mb-4">
             <label htmlFor="email" className="form-label mb-2 fw-bold fs-5">
               Email Address
             </label>

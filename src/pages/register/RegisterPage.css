@@ -1,0 +1,21 @@
+.register-text {
+    font-weight: 400;
+}
+
+.signup-text {
+    font-weight: 500;
+}
+
+.required-logo {
+    color: red;
+    font-weight: 300;
+}
+
+.signin-text {
+    color: #505050
+}
+
+.signin-link {
+    cursor: pointer;
+
+}
