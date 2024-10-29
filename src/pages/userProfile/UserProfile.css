@@ -1,0 +1,19 @@
+.userprofile-title{
+    letter-spacing:2px;
+}
+
+.information-text{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.custom-height {
+    height: auto;
+  }
+  
+  @media (min-width: 768px) {
+    .custom-height {
+      height: 100vh;
+    }
+  }
+  
