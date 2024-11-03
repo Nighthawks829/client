@@ -6,22 +6,22 @@ function UserProfile() {
   return (
     <>
       <nav
-        class="navbar navbar-expand-sm bg-dark border-bottom border-body p-3"
+        className="navbar navbar-expand-sm bg-dark border-bottom border-body p-3"
         data-bs-theme="dark"
       >
-        <div class="container-fluid px-4">
-          <a class="navbar-brand" href="/homePage">
+        <div className="container-fluid px-4">
+          <a className="navbar-brand" href="/homePage">
             To Do Website
           </a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapsibleNavbar"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <div className="collapse navbar-collapse" id="collapsibleNavbar">
             <div className="ms-auto d-flex align-items-center">
               <img
                 src={require("../../assets/profile.jpg")}
@@ -41,10 +41,10 @@ function UserProfile() {
                 />
                 <ul className="dropdown-menu dropdown-menu-end mt-3 py-3">
                   <li>
-                    <a class="dropdown-item">User Profile</a>
+                    <a className="dropdown-item">User Profile</a>
                   </li>
                   <li>
-                    <a class="dropdown-item text-danger">Logut</a>
+                    <a className="dropdown-item text-danger">Logut</a>
                   </li>
                 </ul>
               </div>
