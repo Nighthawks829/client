@@ -8,7 +8,7 @@ import RegisterPage from "./pages/register/RegisterPage";
 import UserProfile from "./pages/userProfile/UserProfile";
 import EditUserProfile from "./pages/editUserrofile/EditUserProfile";
 function App() {
-  return <EditUserProfile/>;
+  return <UserProfile/>;
 }
 
 export default App;

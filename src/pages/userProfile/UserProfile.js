@@ -52,7 +52,7 @@ function UserProfile() {
           </div>
         </div>
       </nav>
-      <div>
+      <div className="container mt-4">
         <div className="row g-0">
           <div className="col-md-6 custom-height">
             <div className="h-50 mt-5 container d-flex align-items-center justify-content-center">
@@ -80,8 +80,8 @@ function UserProfile() {
                   Created At:{" "}
                   <span className="information-text">10 JAN 2012</span>
                 </h3>
-              <div className="mt-5">
-                <button className="btn btn-success shadow col-md-4 col-5 fs-4">Edit Profile</button>
+              <div className="mt-5 text-md-start text-center">
+                <button className="btn btn-success shadow col-md-5 col-5 fs-4">Edit Profile</button>
               </div>
               </div>
             </div>
