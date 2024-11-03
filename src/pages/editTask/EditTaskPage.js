@@ -77,6 +77,8 @@ function EditTaskPage() {
               placeholder="Title"
               className="form-control fs-6"
               required
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
 
@@ -93,6 +95,8 @@ function EditTaskPage() {
               className="description-textarea form-control mb-2 fs-6"
               rows={8}
               required
+              value={description}
+              onChange={(e)=>setDescription(e.target.value)}
             ></textarea>
           </div>
 
