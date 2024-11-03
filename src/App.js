@@ -10,7 +10,7 @@ import EditUserProfile from "./pages/editUserrofile/EditUserProfile";
 import AddTaskPage from "./pages/addTask/AddTaskPage";
 import EditTaskPage from "./pages/editTask/EditTaskPage";
 function App() {
-  return <EditTaskPage />;
+  return <HomePage />;
 }
 
 export default App;
