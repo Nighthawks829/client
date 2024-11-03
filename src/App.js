@@ -7,8 +7,9 @@ import HomePage from "./pages/home/HomePage";
 import RegisterPage from "./pages/register/RegisterPage";
 import UserProfile from "./pages/userProfile/UserProfile";
 import EditUserProfile from "./pages/editUserrofile/EditUserProfile";
+import AddTaskPage from "./pages/addTask/AddTaskPage";
 function App() {
-  return <UserProfile/>;
+  return <AddTaskPage />;
 }
 
 export default App;
