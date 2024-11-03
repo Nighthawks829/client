@@ -27,6 +27,42 @@ function HomePage() {
 
   return (
     <>
+      {/* Modal */}
+      <div
+        className="modal fade"
+        id="deleteTask"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabIndex="-1"
+        aria-labelledby="deleteTaskLabel1"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-body p-5 shadow">
+              <h2 className="text-center mb-5">
+                Are you sure want to delete Task?
+              </h2>
+              <div className="d-flex align-items-center justify-content-evenly mt-5">
+                <button
+                  // className="modal-cancel-button shadow"
+                  className="modal-button btn btn-danger shadow"
+                  data-bs-dismiss="modal"
+                >
+                  Yes
+                </button>
+                <button
+                  className="modal-button btn btn-success shadow"
+                  data-bs-dismiss="modal"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <nav
         className="navbar navbar-expand-sm bg-dark border-bottom border-body p-3"
         data-bs-theme="dark"
@@ -91,7 +127,13 @@ function HomePage() {
                   <a className="dropdown-item">Edit Task</a>
                 </li>
                 <li>
-                  <a className="dropdown-item text-danger">Delete Task</a>
+                  <button
+                    className="dropdown-item text-danger"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteTask"
+                  >
+                    Delete
+                  </button>
                 </li>
               </ul>
             </div>

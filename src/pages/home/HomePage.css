@@ -58,3 +58,29 @@
 /* .updated-icon{
     color: red;
 } */
+
+.modal-cancel-button {
+    width: 150px;
+    text-align: center;
+    border-radius: 15px;
+    border: 2px solid #086788;
+    font-size: 24px;
+    font-weight: 500;
+    color: #DD1C1A;
+    background-color: #fff;
+}
+
+.modal-next-button{
+    width: 150px;
+    text-align: center;
+    border-radius: 15px;
+    border: 2px solid #086788;
+    font-size: 24px;
+    font-weight: 500;
+    color: #639FAB;
+    background-color: #fff; 
+}
+
+.modal-button{
+    width: 150px;
+}

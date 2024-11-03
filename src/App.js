@@ -11,7 +11,7 @@ import AddTaskPage from "./pages/addTask/AddTaskPage";
 import EditTaskPage from "./pages/editTask/EditTaskPage";
 import ViewTaskDetailPage from "./pages/viewTask/ViewTaskDetailPage";
 function App() {
-  return <ViewTaskDetailPage/>
+  return <HomePage />;
 }
 
 export default App;
