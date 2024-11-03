@@ -8,8 +8,9 @@ import RegisterPage from "./pages/register/RegisterPage";
 import UserProfile from "./pages/userProfile/UserProfile";
 import EditUserProfile from "./pages/editUserrofile/EditUserProfile";
 import AddTaskPage from "./pages/addTask/AddTaskPage";
+import EditTaskPage from "./pages/editTask/EditTaskPage";
 function App() {
-  return <AddTaskPage />;
+  return <EditTaskPage />;
 }
 
 export default App;
