@@ -9,8 +9,9 @@ import UserProfile from "./pages/userProfile/UserProfile";
 import EditUserProfile from "./pages/editUserrofile/EditUserProfile";
 import AddTaskPage from "./pages/addTask/AddTaskPage";
 import EditTaskPage from "./pages/editTask/EditTaskPage";
+import ViewTaskDetailPage from "./pages/viewTask/ViewTaskDetailPage";
 function App() {
-  return <HomePage />;
+  return <ViewTaskDetailPage/>
 }
 
 export default App;
