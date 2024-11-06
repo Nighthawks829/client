@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
-import { deleteUserThunk, editUserThunk } from "./userThunk";
-
-const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
+import { deleteUserThunk, editUserThunk, getUserThunk } from "./userThunk";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isLoading: false,
@@ -15,7 +14,7 @@ const initialState = {
 export const getUser = createAsyncThunk(
   "user/getUser",
   async (userId, thunkAPI) => {
-    return addUserThunk(`/user/${userId}`, thunkAPI);
+    return getUserThunk(`/user/${userId}`, thunkAPI);
   }
 );
 

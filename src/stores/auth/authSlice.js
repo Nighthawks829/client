@@ -72,7 +72,7 @@ const authSlice = createSlice({
         state.user = null;
         toast.success("Logout successful!");
       })
-      .addCase(logoutUser.rejected, () => {
+      .addCase(logoutUser.rejected, (state,payload) => {
         state.isLoading = false;
         toast.error(payload);
       })

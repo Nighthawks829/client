@@ -1,11 +1,6 @@
 import { toast } from "react-toastify";
 import { addTaskThunk, editTaskThunk, getTaskThunk } from "./taskThunk";
-
-const {
-  isFluxStandardAction,
-  createSlice,
-  createAsyncThunk,
-} = require("@reduxjs/toolkit");
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isLoading: false,
