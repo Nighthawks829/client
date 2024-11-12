@@ -18,7 +18,7 @@ function EditUserProfile() {
 
   return (
     <>
-      <nav
+      {/* <nav
         className="navbar navbar-expand-sm bg-dark border-bottom border-body p-3"
         data-bs-theme="dark"
       >
@@ -64,8 +64,8 @@ function EditUserProfile() {
             </div>
           </div>
         </div>
-      </nav>
-      <div className="container mt-4">
+      </nav> */}
+      <div className="container my-5">
         <div className="d-flex align-items-center justify-content-center">
           <img
             src={require("../../assets/profile.jpg")}

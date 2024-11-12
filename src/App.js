@@ -10,8 +10,42 @@ import EditUserProfile from "./pages/editUserrofile/EditUserProfile";
 import AddTaskPage from "./pages/addTask/AddTaskPage";
 import EditTaskPage from "./pages/editTask/EditTaskPage";
 import ViewTaskDetailPage from "./pages/viewTask/ViewTaskDetailPage";
+import HomeLayout from "./pages/layout/HomeLayout";
+import { Navigate, Route, Routes } from "react-router";
+import { BrowserRouter } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
-  return <HomePage />;
+  const { loggedIn } = useSelector((store) => store.auth);
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/"
+          element={loggedIn ? <HomeLayout /> : <Navigate to="/login" />}
+        >
+          <Route index element={<HomePage />} />
+          <Route path="addtask" element={<AddTaskPage />} />
+          <Route path="edittask" element={<EditTaskPage />} />
+          <Route path="viewtask" element={<ViewTaskDetailPage />} />
+          <Route path="userprofile" element={<UserProfile />} />
+          <Route path="edituserprofile" element={<EditUserProfile />} />
+        </Route>
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+      <ToastContainer
+        position="top-center"
+        autoClose="5000"
+        hideProgressBar={false}
+        closeOnClick={true}
+        pauseOnHover={true}
+        draggable={true}
+      />
+    </BrowserRouter>
+  );
 }
 
 export default App;

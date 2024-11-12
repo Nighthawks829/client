@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./RegisterPage.css";
+import { useNavigate } from "react-router";
 
 function RegisterPage() {
   const [name, setName] = useState("");
@@ -10,6 +11,7 @@ function RegisterPage() {
   const [emailFocus, setEmailFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
   const [confirmPasswordFocus, setConfirmPasswordFocus] = useState(false);
+  const navigate=useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,7 +19,7 @@ function RegisterPage() {
   }
 
   function handleSignInClick() {
-    console.log("Sign In Link Click");
+    navigate("/login") 
   }
 
   return (

@@ -16,7 +16,7 @@ function EditTaskPage() {
 
   return (
     <>
-      <nav
+      {/* <nav
         className="navbar navbar-expand-sm bg-dark border-bottom border-body p-3"
         data-bs-theme="dark"
       >
@@ -62,8 +62,8 @@ function EditTaskPage() {
             </div>
           </div>
         </div>
-      </nav>
-      <div className="container mt">
+      </nav> */}
+      <div className="container my-5">
         <h1 className="text-center fw-bold">Edit Task</h1>
         <form onSubmit={handleSubmit}>
           <div className="my-5 col-lg-7 col-12 mx-auto">

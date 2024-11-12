@@ -12,7 +12,7 @@ function AddTaskPage() {
 
   return (
     <>
-      <nav
+      {/* <nav
         className="navbar navbar-expand-sm bg-dark border-bottom border-body p-3"
         data-bs-theme="dark"
       >
@@ -58,8 +58,8 @@ function AddTaskPage() {
             </div>
           </div>
         </div>
-      </nav>
-      <div className="container mt-5">
+      </nav> */}
+      <div className="container my-5">
         <h1 className="text-center fw-bold">Add New Task</h1>
         <form onSubmit={handleSubmit}>
           <div className="my-5 col-lg-7 col-12 mx-auto">

@@ -5,7 +5,7 @@ import "./ViewTaskDetailPage.css";
 function ViewTaskDetailPage() {
   return (
     <>
-      <nav
+      {/* <nav
         className="navbar navbar-expand-sm bg-dark border-bottom border-body p-3"
         data-bs-theme="dark"
       >
@@ -51,8 +51,8 @@ function ViewTaskDetailPage() {
             </div>
           </div>
         </div>
-      </nav>
-      <div className="container mt-5">
+      </nav> */}
+      <div className="container my-5">
         <h1 className="text-center fw-bold">View Task Detail</h1>
         <div className="my-5 col-lg-7 col-12 mx-auto">
           <h5 className="mb-3 fw-bold fs-3">Title</h5>

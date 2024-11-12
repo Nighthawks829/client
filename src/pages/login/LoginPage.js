@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./loginPage.css";
+import { useDispatch, useSelector } from "react-redux";
+import { loggedInUser, loginUser } from "../../stores/auth/authSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const { user } = useSelector((store) => store.auth);
+  const { loggedIn } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailFocus, setEmailFocus] = useState(false);
@@ -9,8 +17,15 @@ function LoginPage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Submit login form");
+    dispatch(loginUser({ email: email, password: password }));
   }
+
+  useEffect(() => {
+    if (user) {
+      dispatch(loggedInUser({ loggedIn: true }));
+      navigate("/");
+    }
+  }, [user]);
 
   return (
     <div className="background-image vh-100 d-flex align-items-center justify-content-center">
@@ -64,6 +79,9 @@ function LoginPage() {
             </button>
           </div>
         </form>
+        <div className="mt-4 text-center">
+          Don't have an account? <Link to={"/register"}>Signup</Link>
+        </div>
       </div>
     </div>
   );

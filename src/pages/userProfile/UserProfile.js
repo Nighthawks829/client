@@ -1,11 +1,13 @@
 import React from "react";
 import "./UserProfile.css";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useNavigate } from "react-router";
 
 function UserProfile() {
+  const navigate=useNavigate()
   return (
     <>
-      <nav
+      {/* <nav
         className="navbar navbar-expand-sm bg-dark border-bottom border-body p-3"
         data-bs-theme="dark"
       >
@@ -51,8 +53,8 @@ function UserProfile() {
             </div>
           </div>
         </div>
-      </nav>
-      <div className="container mt-4">
+      </nav> */}
+      <div className="container my-5">
         <div className="row g-0">
           <div className="col-md-6 custom-height">
             <div className="h-50 mt-5 container d-flex align-items-center justify-content-center">
@@ -81,7 +83,7 @@ function UserProfile() {
                   <span className="information-text">10 JAN 2012</span>
                 </h3>
               <div className="mt-5 text-md-start text-center">
-                <button className="btn btn-success shadow col-md-5 col-5 fs-4">Edit Profile</button>
+                <button className="btn btn-success shadow col-md-5 col-5 fs-4" onClick={()=>navigate("/edituserprofile")}>Edit Profile</button>
               </div>
               </div>
             </div>

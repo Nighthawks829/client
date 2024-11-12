@@ -3,22 +3,28 @@ import "./HomePage.css";
 import { IoMdMore } from "react-icons/io";
 
 import { IoMdArrowDropdown } from "react-icons/io";
+import { Link, useNavigate } from "react-router-dom";
 
 function HomePage() {
+  const navigate=useNavigate()
   const TruncateText = ({ text, limit }) => {
     return text.length > limit ? `${text.substring(0, limit)}...` : text;
   };
 
   const AddButton = () => {
     return (
+      <Link to={'/addtask'}>
       <div className="fixed-icon">
         <i className="fa-solid fa-circle-plus add-button text-success"></i>
       </div>
+      </Link>
     );
   };
 
   function handleClick() {
-    console.log("Card is click");
+    // console.log("Card is click");
+    navigate("/viewtask")
+    
   }
 
   function handleMore() {
@@ -63,7 +69,7 @@ function HomePage() {
         </div>
       </div>
 
-      <nav
+      {/* <nav
         className="navbar navbar-expand-sm bg-dark border-bottom border-body p-3"
         data-bs-theme="dark"
       >
@@ -107,7 +113,7 @@ function HomePage() {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
       <div className="container mt-5">
         <h1 className="text-center fw-bold mb-5">To Do List</h1>
 
@@ -174,7 +180,7 @@ function HomePage() {
               />
               <ul className="dropdown-menu mt-3 py-3">
                 <li>
-                  <a className="dropdown-item">Edit Task</a>
+                  <Link className="dropdown-item" to={'/edittask'}>Edit Task</Link>
                 </li>
                 <li>
                   <a className="dropdown-item text-danger">Delete Task</a>
