@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./RegisterPage.css";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../stores/auth/authSlice";
 
 function RegisterPage() {
   const [name, setName] = useState("");
@@ -11,20 +14,28 @@ function RegisterPage() {
   const [emailFocus, setEmailFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
   const [confirmPasswordFocus, setConfirmPasswordFocus] = useState(false);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log("Sign Up Form Submit");
+    if (password !== confirmPassword) {
+      toast.error("Password and confirm password are not same");
+    } else {
+      await dispatch(
+        registerUser({ name: name, email: email, password: password })
+      ).unwrap();
+      navigate("/");
+    }
   }
 
   function handleSignInClick() {
-    navigate("/login") 
+    navigate("/login");
   }
 
   return (
-    <div className="background-image vh-100 d-flex align-items-center justify-content-center">
-      <div className="col-lg-6 col-md-9 col-11 py-5 px-4 rounded shadow-lg bg-light">
+    <div className="background-image h-100 d-flex align-items-center justify-content-center">
+      <div className="my-5 col-lg-6 col-md-9 col-11 py-5 px-4 rounded shadow-lg bg-light">
         <h2 className="register-text text-center display-5 mb-5">
           To Do Website
         </h2>

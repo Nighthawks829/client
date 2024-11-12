@@ -24,7 +24,8 @@ export const logoutUserThunk = async (url, thunkAPI) => {
 
 export const registerUserThunk = async (url, user, thunkAPI) => {
   try {
-    const response = customFetch.post(url, user);
+    const response = await customFetch.post(url, user);
+    console.log(response);
     return response.data.user;
   } catch (error) {
     const errorMessage = error.response?.data?.msg || "An error occured";
