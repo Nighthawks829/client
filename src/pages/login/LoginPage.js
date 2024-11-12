@@ -28,8 +28,8 @@ function LoginPage() {
   }, [user]);
 
   return (
-    <div className="background-image vh-100 d-flex align-items-center justify-content-center">
-      <div className="col-lg-6 col-md-9 col-11 py-5 px-4 rounded shadow-lg bg-light">
+    <div className="background-image h-100 d-flex align-items-center justify-content-center">
+      <div className="my-5 col-lg-6 col-md-9 col-11 py-5 px-4 rounded shadow-lg bg-light">
         <h1 className="welcome-text text-center display-4">
           Welcome to To Do Website
         </h1>

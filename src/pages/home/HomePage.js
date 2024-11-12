@@ -4,27 +4,28 @@ import { IoMdMore } from "react-icons/io";
 
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function HomePage() {
-  const navigate=useNavigate()
+  const { user } = useSelector((store) => store.auth);
+  const navigate = useNavigate();
   const TruncateText = ({ text, limit }) => {
     return text.length > limit ? `${text.substring(0, limit)}...` : text;
   };
 
   const AddButton = () => {
     return (
-      <Link to={'/addtask'}>
-      <div className="fixed-icon">
-        <i className="fa-solid fa-circle-plus add-button text-success"></i>
-      </div>
+      <Link to={"/addtask"}>
+        <div className="fixed-icon">
+          <i className="fa-solid fa-circle-plus add-button text-success"></i>
+        </div>
       </Link>
     );
   };
 
   function handleClick() {
     // console.log("Card is click");
-    navigate("/viewtask")
-    
+    navigate("/viewtask");
   }
 
   function handleMore() {
@@ -180,7 +181,9 @@ function HomePage() {
               />
               <ul className="dropdown-menu mt-3 py-3">
                 <li>
-                  <Link className="dropdown-item" to={'/edittask'}>Edit Task</Link>
+                  <Link className="dropdown-item" to={"/edittask"}>
+                    Edit Task
+                  </Link>
                 </li>
                 <li>
                   <a className="dropdown-item text-danger">Delete Task</a>

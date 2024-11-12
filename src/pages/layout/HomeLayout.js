@@ -2,10 +2,49 @@ import React from "react";
 import { Outlet } from "react-router";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../stores/auth/authSlice";
 
 function HomeLayout() {
+  const dispatch = useDispatch();
+  const { user } = useSelector((store) => store.auth);
+
   return (
     <>
+      {/* Modal */}
+      <div
+        className="modal fade"
+        id="logoutModal"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabIndex="-1"
+        aria-labelledby="logout"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-body p-5 shadow">
+              <h2 className="text-center mb-5">Are you sure want to logout?</h2>
+              <div className="d-flex align-items-center justify-content-evenly mt-5">
+                <button
+                  className="modal-button btn btn-danger shadow"
+                  data-bs-dismiss="modal"
+                  onClick={() => dispatch(logoutUser())}
+                >
+                  Yes
+                </button>
+                <button
+                  className="modal-button btn btn-success shadow"
+                  data-bs-dismiss="modal"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <nav
         className="navbar navbar-expand-sm bg-dark border-bottom border-body p-3"
         data-bs-theme="dark"
@@ -30,7 +69,7 @@ function HomeLayout() {
                 className="profile-picture rounded-circle"
               />
               <p className="profile-name text-light mb-0 ms-3 me-1">
-                Sunlightsam
+                {user.name}
               </p>
               <div className="dropdown">
                 <IoMdArrowDropdown
@@ -47,7 +86,13 @@ function HomeLayout() {
                     </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item text-danger">Logut</a>
+                    <a
+                      className="dropdown-item text-danger"
+                      data-bs-toggle="modal"
+                      data-bs-target="#logoutModal"
+                    >
+                      Logut
+                    </a>
                   </li>
                 </ul>
               </div>
