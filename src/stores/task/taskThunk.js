@@ -1,4 +1,3 @@
-import { thunk } from "redux-thunk";
 import customFetch, { checkForUnauthorizedResponse } from "../../utils/axios";
 import { clearTaskValues } from "./taskSlice";
 
@@ -31,7 +30,7 @@ export const editTaskThunk = async (url, task, thunkAPI) => {
   }
 };
 
-export const deleteTask = async (url, thunkAPI) => {
+export const deleteTaskThunk = async (url, thunkAPI) => {
   try {
     const response = await customFetch.delete(url);
     thunkAPI.dispatch(clearTaskValues());

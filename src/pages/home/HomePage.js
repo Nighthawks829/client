@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./HomePage.css";
 import { IoMdMore } from "react-icons/io";
 
@@ -7,11 +7,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTasks } from "../../stores/allTasks/allTasksSlice";
 import { convertDateTime } from "../../utils/convertDateTime";
+import { deleteTask } from "../../stores/task/taskSlice";
 
 function HomePage() {
   const { tasks } = useSelector((store) => store.allTasks);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [deleteTaskId, setDeleteTaskId] = useState("");
+  const [deleteTaskTitle, setDeleteTaskTitle] = useState("");
+
   const TruncateText = ({ text, limit }) => {
     return text.length > limit ? `${text.substring(0, limit)}...` : text;
   };
@@ -29,6 +33,11 @@ function HomePage() {
       </Link>
     );
   };
+
+  function handleDelete() {
+    dispatch(deleteTask(deleteTaskId));
+    dispatch(getAllTasks());
+  }
 
   function handleClick(taskid) {
     navigate(`/viewtask/${taskid}`);
@@ -54,13 +63,14 @@ function HomePage() {
           <div className="modal-content">
             <div className="modal-body p-5 shadow">
               <h2 className="text-center mb-5">
-                Are you sure want to delete Task?
+                Are you sure want to delete {deleteTaskTitle}?
               </h2>
               <div className="d-flex align-items-center justify-content-evenly mt-5">
                 <button
                   // className="modal-cancel-button shadow"
                   className="modal-button btn btn-danger shadow"
                   data-bs-dismiss="modal"
+                  onClick={() => handleDelete()}
                 >
                   Yes
                 </button>
@@ -108,6 +118,10 @@ function HomePage() {
                         className="dropdown-item text-danger"
                         data-bs-toggle="modal"
                         data-bs-target="#deleteTask"
+                        onClick={() => {
+                          setDeleteTaskTitle(task.title);
+                          setDeleteTaskId(task.id);
+                        }}
                       >
                         Delete
                       </button>
@@ -154,146 +168,6 @@ function HomePage() {
         ) : (
           <h4 className="text-center">Empty Tasks. Try adding something.</h4>
         )}
-
-        {/* <div className="card col-lg-6 col-md-9 col-11 mx-auto mb-4">
-          <div className="card-body p-0">
-            <div className="d-flex align-items-center justify-content-between mb-3 pt-3 px-3 pb-0">
-              <h5 className="card-title m-0">To Do Title 1</h5>
-              <IoMdMore
-                size={25}
-                className="dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              />
-              <ul className="dropdown-menu mt-3 py-3">
-                <li>
-                  <a className="dropdown-item">Edit Task</a>
-                </li>
-                <li>
-                  <button
-                    className="dropdown-item text-danger"
-                    data-bs-toggle="modal"
-                    data-bs-target="#deleteTask"
-                  >
-                    Delete
-                  </button>
-                </li>
-              </ul>
-            </div>
-            <hr className="m-0" />
-            <div onClick={handleClick} className="card-hover pt-3 px-3 pb-3">
-              <p className="card-text">
-                <TruncateText
-                  text="To Do Message 1 - Some quick example text to build on the card title and make up the bulk of the card's content."
-                  limit={100}
-                />
-              </p>
-              <div className="d-flex align-items-center mb-2">
-                <i className="fa-regular fa-clock text-secondary"></i>
-                <p className="date-text text-secondary mb-0 ms-2">
-                  Created At: 19 JAN 2012 08:00
-                </p>
-              </div>
-              <div className="d-flex align-items-center">
-                <i className="fa-solid fa-clock-rotate-left text-secondary"></i>
-                <p className="date-text text-secondary mb-0 ms-2">
-                  Edited At: 20 JAN 2012 08:00
-                </p>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
-        {/* <div className="card col-lg-6 col-md-9 col-11 mx-auto mb-4">
-          <div className="card-body p-0">
-            <div className="d-flex align-items-center justify-content-between mb-3 pt-3 px-3 pb-0">
-              <h5 className="card-title m-0">To Do Title 1</h5>
-              <IoMdMore
-                size={25}
-                className="dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              />
-              <ul className="dropdown-menu mt-3 py-3">
-                <li>
-                  <Link className="dropdown-item" to={"/edittask"}>
-                    Edit Task
-                  </Link>
-                </li>
-                <li>
-                  <a className="dropdown-item text-danger">Delete Task</a>
-                </li>
-              </ul>
-            </div>
-            <hr className="m-0" />
-            <div onClick={handleClick} className="card-hover pt-3 px-3 pb-3">
-              <p className="card-text">
-                <TruncateText
-                  text="To Do Message 1 - Some quick example text to build on the card title and make up the bulk of the card's content."
-                  limit={100}
-                />
-              </p>
-              <div className="d-flex align-items-center mb-2">
-                <i className="fa-regular fa-clock text-secondary"></i>
-                <p className="date-text text-secondary mb-0 ms-2">
-                  Created At: 19 JAN 2012 08:00
-                </p>
-              </div>
-              <div className="d-flex align-items-center">
-                <i className="fa-solid fa-clock-rotate-left text-secondary"></i>
-                <p className="date-text text-secondary mb-0 ms-2">
-                  Edited At: 20 JAN 2012 08:00
-                </p>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
-        {/* <div className="card col-lg-6 col-md-9 col-11 mx-auto mb-4">
-          <div className="card-body p-0">
-            <div className="d-flex align-items-center justify-content-between mb-3 pt-3 px-3 pb-0">
-              <h5 className="card-title m-0">To Do Title 1</h5>
-              <IoMdMore
-                size={25}
-                className="dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              />
-              <ul className="dropdown-menu mt-3 py-3">
-                <li>
-                  <a className="dropdown-item">Edit Task</a>
-                </li>
-                <li>
-                  <a className="dropdown-item text-danger">Delete Task</a>
-                </li>
-              </ul>
-            </div>
-            <hr className="m-0" />
-            <div onClick={handleClick} className="card-hover pt-3 px-3 pb-3">
-              <p className="card-text">
-                <TruncateText
-                  text="To Do Message 1 - Some quick example text to build on the card title and make up the bulk of the card's content."
-                  limit={100}
-                />
-              </p>
-              <div className="d-flex align-items-center mb-2">
-                <i className="fa-regular fa-clock text-secondary"></i>
-                <p className="date-text text-secondary mb-0 ms-2">
-                  Created At: 19 JAN 2012 08:00
-                </p>
-              </div>
-              <div className="d-flex align-items-center">
-                <i className="fa-solid fa-clock-rotate-left text-secondary"></i>
-                <p className="date-text text-secondary mb-0 ms-2">
-                  Edited At: 20 JAN 2012 08:00
-                </p>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
       <AddButton />
     </>

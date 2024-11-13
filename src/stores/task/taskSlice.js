@@ -1,5 +1,10 @@
 import { toast } from "react-toastify";
-import { addTaskThunk, editTaskThunk, getTaskThunk } from "./taskThunk";
+import {
+  addTaskThunk,
+  deleteTaskThunk,
+  editTaskThunk,
+  getTaskThunk,
+} from "./taskThunk";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -36,7 +41,7 @@ export const editTask = createAsyncThunk(
 export const deleteTask = createAsyncThunk(
   "task/deleteTask",
   async (taskId, thunkAPI) => {
-    return deleteTask(`/task/${taskId}`);
+    return deleteTaskThunk(`/task/${taskId}`, thunkAPI);
   }
 );
 
@@ -96,6 +101,7 @@ const taskSlice = createSlice({
       })
       .addCase(deleteTask.fulfilled, (state, { payload }) => {
         state.isLoading = false;
+        console.log("Successful delete task");
         toast.success("Task deleted successfully");
       })
       .addCase(deleteTask.rejected, (state, { payload }) => {
