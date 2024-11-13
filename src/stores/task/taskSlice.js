@@ -9,7 +9,7 @@ const initialState = {
   message: "",
   done: false,
   createdAt: "",
-  editedAt: "",
+  updatedAt: "",
 };
 
 export const addTask = createAsyncThunk(
@@ -74,7 +74,7 @@ const taskSlice = createSlice({
         state.message = payload.message;
         state.done = payload.done;
         state.createdAt = payload.createdAt;
-        state.editedAt = payload.editedAt;
+        state.updatedAt = payload.updatedAt;
       })
       .addCase(getTask.rejected, (state, { payload }) => {
         state.isLoading = false;

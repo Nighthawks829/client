@@ -15,6 +15,7 @@ export const addTaskThunk = async (url, task, thunkAPI) => {
 export const getTaskThunk = async (url, thunkAPI) => {
   try {
     const response = await customFetch.get(url);
+    return response.data.task;
   } catch (error) {
     return checkForUnauthorizedResponse(error, thunkAPI);
   }
