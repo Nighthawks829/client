@@ -29,8 +29,8 @@ function App() {
         >
           <Route index element={<HomePage />} />
           <Route path="addtask" element={<AddTaskPage />} />
-          <Route path="edittask" element={<EditTaskPage />} />
-          <Route path="viewtask" element={<ViewTaskDetailPage />} />
+          <Route path="edittask/:id" element={<EditTaskPage />} />
+          <Route path="viewtask/:id" element={<ViewTaskDetailPage />} />
           <Route path="userprofile" element={<UserProfile />} />
           <Route path="edituserprofile" element={<EditUserProfile />} />
         </Route>

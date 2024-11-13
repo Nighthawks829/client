@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getAllTasksThunk } from "./allTasksThunk";
 
 const initialState = {
   isLoading: false,
@@ -9,9 +10,9 @@ const initialState = {
 };
 
 export const getAllTasks = createAsyncThunk(
-  "task/getTasks",
+  "allTask/getTasks",
   async (_, thunkAPI) => {
-    return getAllTasks("/task/", thunkAPI);
+    return getAllTasksThunk("/task/", thunkAPI);
   }
 );
 
