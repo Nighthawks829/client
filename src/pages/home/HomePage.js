@@ -80,7 +80,10 @@ function HomePage() {
         <h1 className="text-center fw-bold mb-5">To Do List</h1>
         {tasks.length !== 0 ? (
           tasks.map((task) => (
-            <div className="card col-lg-6 col-md-9 col-11 mx-auto mb-4" key={task.id}>
+            <div
+              className="card col-lg-6 col-md-9 col-11 mx-auto mb-4"
+              key={task.id}
+            >
               <div className="card-body p-0">
                 <div className="d-flex align-items-center justify-content-between mb-3 pt-3 px-3 pb-0">
                   <h5 className="card-title m-0">{task.title}</h5>
@@ -118,22 +121,31 @@ function HomePage() {
                   className="card-hover pt-3 px-3 pb-3"
                 >
                   <p className="card-text">
-                    <TruncateText
-                      text="To Do Message 1 - Some quick example text to build on the card title and make up the bulk of the card's content."
-                      limit={100}
-                    />
+                    {task.message ? (
+                      <TruncateText text={task.message} limit={100} />
+                    ) : (
+                      ""
+                    )}
                   </p>
                   <div className="d-flex align-items-center mb-2">
                     <i className="fa-regular fa-clock text-secondary"></i>
-                    <p className="date-text text-secondary mb-0 ms-2">
-                      Created At: {convertDateTime(task.createdAt)}
-                    </p>
+                    {task.createdAt ? (
+                      <p className="date-text text-secondary mb-0 ms-2">
+                        Created At: {convertDateTime(task.createdAt)}
+                      </p>
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <div className="d-flex align-items-center">
                     <i className="fa-solid fa-clock-rotate-left text-secondary"></i>
-                    <p className="date-text text-secondary mb-0 ms-2">
-                      Updated At: {convertDateTime(task.updatedAt)}
-                    </p>
+                    {task.updatedAt ? (
+                      <p className="date-text text-secondary mb-0 ms-2">
+                        Updated At: {convertDateTime(task.updatedAt)}
+                      </p>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
               </div>
