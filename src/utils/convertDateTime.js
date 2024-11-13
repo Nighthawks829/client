@@ -8,7 +8,7 @@ export function convertDateTime(inputDateTime) {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
-    timeZone: "UTC",
+    // timeZone: "UTC",
   }; // Convert the date to '19 JAN 2012 08:00'
   const formattedDate = new Intl.DateTimeFormat("en-GB", options)
     .format(date)
