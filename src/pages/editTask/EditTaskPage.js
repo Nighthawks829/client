@@ -1,68 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import "./EditTaskPage.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  editTask,
+  getTask,
+  handleTaskChange,
+} from "../../stores/task/taskSlice";
+import { useNavigate, useParams } from "react-router";
 
 function EditTaskPage() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [isSwitchOn, setIsSwitchOn] = useState(false);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { title, message, done, isLoading } = useSelector(
+    (store) => store.task
+  );
+  const navigate = useNavigate();
 
-  const toggleSwitch = () => setIsSwitchOn((prev) => !prev);
+  useEffect(() => {
+    dispatch(getTask(id));
+  }, []);
 
-  function handleSubmit(e) {
+  const handleUserInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    dispatch(handleTaskChange({ name, value }));
+  };
+
+  const toggleSwitch = () => {
+    dispatch(handleTaskChange({ name: "done", value: !done }));
+  };
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log("Edit Task Form Submit");
+    await dispatch(
+      editTask({
+        taskId: id,
+        task: {
+          title,
+          message,
+          done,
+        },
+      })
+    ).unwrap();
+    navigate("/");
   }
 
   return (
     <>
-      {/* <nav
-        className="navbar navbar-expand-sm bg-dark border-bottom border-body p-3"
-        data-bs-theme="dark"
-      >
-        <div className="container-fluid px-4">
-          <a className="navbar-brand" href="/homePage">
-            To Do Website
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapsibleNavbar"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="collapsibleNavbar">
-            <div className="ms-auto d-flex align-items-center">
-              <img
-                src={require("../../assets/profile.jpg")}
-                alt="profile-picture"
-                className="profile-picture rounded-circle"
-              />
-              <p className="profile-name text-light mb-0 ms-3 me-1">
-                Sunlightsam
-              </p>
-              <div className="dropdown">
-                <IoMdArrowDropdown
-                  color="white"
-                  className="dropdown-toggle"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                />
-                <ul className="dropdown-menu dropdown-menu-end mt-3 py-3">
-                  <li>
-                    <a className="dropdown-item">User Profile</a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item text-danger">Logut</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav> */}
       <div className="container my-5">
         <h1 className="text-center fw-bold">Edit Task</h1>
         <form onSubmit={handleSubmit}>
@@ -78,7 +63,7 @@ function EditTaskPage() {
               className="form-control fs-6"
               required
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={handleUserInput}
             />
           </div>
 
@@ -90,13 +75,13 @@ function EditTaskPage() {
               Description
             </label>
             <textarea
-              name="description"
-              id="description"
+              name="message"
+              id="message"
               className="description-textarea form-control mb-2 fs-6"
               rows={8}
               required
-              value={description}
-              onChange={(e)=>setDescription(e.target.value)}
+              value={message}
+              onChange={handleUserInput}
             ></textarea>
           </div>
 
@@ -107,8 +92,10 @@ function EditTaskPage() {
             <div>
               <label className="switch">
                 <input
+                  name="done"
+                  id="done"
                   type="checkbox"
-                  checked={isSwitchOn}
+                  checked={done}
                   onChange={toggleSwitch}
                 />
                 <span className="slider"></span>
