@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editUser } from "../../stores/user/userSlice";
+import {
+  editUser,
+  getUser,
+  handleUserChange
+} from "../../stores/user/userSlice";
 import { useNavigate } from "react-router";
 
 function EditUserProfile() {
   const { user } = useSelector((store) => store.auth);
+  const { name, email } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [nameFocus, setNameFocus] = useState(false);
@@ -17,9 +22,14 @@ function EditUserProfile() {
   const [confirmPasswordFocus, setConfirmPasswordFocus] = useState(false);
 
   useEffect(() => {
-    setName(user.name);
-    setEmail(user.email);
+    dispatch(getUser(user.userId));
   }, []);
+
+  const handleUserInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    dispatch(handleUserChange({ name, value }));
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -52,7 +62,7 @@ function EditUserProfile() {
               className={`form-control fs-6 ${nameFocus ? "shadow" : ""}`}
               required
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={handleUserInput}
               onFocus={() => setNameFocus(true)}
               onBlur={() => setNameFocus(false)}
             />
@@ -70,7 +80,7 @@ function EditUserProfile() {
               className={`form-control fs-6 ${emailFocus ? "shadow" : ""}`}
               required
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleUserInput}
               onFocus={() => setEmailFocus(true)}
               onBlur={() => setEmailFocus(false)}
             />
