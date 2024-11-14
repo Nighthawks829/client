@@ -64,7 +64,7 @@ const userSlice = createSlice({
       })
       .addCase(editUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        toast.error(payload);
+        toast.success("Edit user successful!");
       })
       .addCase(editUser.rejected, (state, { payload }) => {
         state.isLoading = false;
