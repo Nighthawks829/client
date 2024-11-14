@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +7,13 @@ import { logoutUser } from "../../stores/auth/authSlice";
 
 function HomeLayout() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user } = useSelector((store) => store.auth);
+
+  function handleLogout() {
+    dispatch(logoutUser());
+    navigate("/");
+  }
 
   return (
     <>
@@ -29,7 +35,7 @@ function HomeLayout() {
                 <button
                   className="modal-button btn btn-danger shadow"
                   data-bs-dismiss="modal"
-                  onClick={() => dispatch(logoutUser())}
+                  onClick={handleLogout}
                 >
                   Yes
                 </button>
