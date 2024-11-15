@@ -6,14 +6,13 @@ import {
   handleUserChange
 } from "../../stores/user/userSlice";
 import { useNavigate } from "react-router";
+import { refreshUser } from "../../stores/auth/authSlice";
 
 function EditUserProfile() {
   const { user } = useSelector((store) => store.auth);
   const { name, email } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [nameFocus, setNameFocus] = useState(false);
@@ -36,6 +35,7 @@ function EditUserProfile() {
     await dispatch(
       editUser({ userId: user.userId, user: { name, email, password } })
     ).unwrap();
+    dispatch(refreshUser());
     navigate("/userprofile");
   }
 

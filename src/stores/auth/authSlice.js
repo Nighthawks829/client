@@ -4,7 +4,7 @@ import {
   clearAuthStoreThunk,
   loginUserThunk,
   logoutUserThunk,
-  registerUserThunk,
+  registerUserThunk
 } from "./authThunk";
 import { toast } from "react-toastify";
 
@@ -38,7 +38,7 @@ export const clearAuthStore = createAsyncThunk(
 const initialState = {
   user: getUserFromCookies(),
   loggedIn: false,
-  isLoading: false,
+  isLoading: false
 };
 
 const authSlice = createSlice({
@@ -48,6 +48,9 @@ const authSlice = createSlice({
     loggedInUser: (state, { payload }) => {
       state.loggedIn = payload.loggedIn;
     },
+    refreshUser: (state) => {
+      state.user = getUserFromCookies();
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -92,8 +95,8 @@ const authSlice = createSlice({
       .addCase(clearAuthStore.rejected, () => {
         toast.error("There was an error");
       });
-  },
+  }
 });
 
-export const { loggedInUser } = authSlice.actions;
+export const { loggedInUser,refreshUser } = authSlice.actions;
 export default authSlice.reducer;
