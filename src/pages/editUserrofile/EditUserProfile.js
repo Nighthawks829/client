@@ -7,6 +7,7 @@ import {
 } from "../../stores/user/userSlice";
 import { useNavigate } from "react-router";
 import { refreshUser } from "../../stores/auth/authSlice";
+import { toast } from "react-toastify";
 
 function EditUserProfile() {
   const { user } = useSelector((store) => store.auth);
@@ -32,11 +33,15 @@ function EditUserProfile() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await dispatch(
-      editUser({ userId: user.userId, user: { name, email, password } })
-    ).unwrap();
-    dispatch(refreshUser());
-    navigate("/userprofile");
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+    } else {
+      await dispatch(
+        editUser({ userId: user.userId, user: { name, email, password } })
+      ).unwrap();
+      dispatch(refreshUser());
+      navigate("/userprofile");
+    }
   }
 
   return (
