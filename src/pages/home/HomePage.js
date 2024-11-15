@@ -43,10 +43,6 @@ function HomePage() {
     navigate(`/viewtask/${taskid}`);
   }
 
-  function handleMore() {
-    console.log("More button is click");
-  }
-
   return (
     <>
       {/* Modal */}

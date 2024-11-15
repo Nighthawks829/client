@@ -101,7 +101,6 @@ const taskSlice = createSlice({
       })
       .addCase(deleteTask.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        console.log("Successful delete task");
         toast.success("Task deleted successfully");
       })
       .addCase(deleteTask.rejected, (state, { payload }) => {

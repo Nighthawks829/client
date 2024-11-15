@@ -8,7 +8,7 @@ export const loginUserThunk = async (url, user, thunkAPI) => {
     return response.data;
   } catch (error) {
     const errorMessage = error.response?.data?.msg || "An error ocured";
-    return thunkAPI.rejechWithValue(errorMessage);
+    return thunkAPI.rejectWithValue(errorMessage);
   }
 };
 
@@ -18,18 +18,17 @@ export const logoutUserThunk = async (url, thunkAPI) => {
     return response.data;
   } catch (error) {
     const errorMessage = error.response?.data?.msg || "An error occured";
-    return thunkAPI.rejechWithValue(errorMessage);
+    return thunkAPI.rejectWithValue(errorMessage);
   }
 };
 
 export const registerUserThunk = async (url, user, thunkAPI) => {
   try {
     const response = await customFetch.post(url, user);
-    console.log(response);
     return response.data.user;
   } catch (error) {
     const errorMessage = error.response?.data?.msg || "An error occured";
-    return thunkAPI.rejechWithValue(errorMessage);
+    return thunkAPI.rejectWithValue(errorMessage);
   }
 };
 

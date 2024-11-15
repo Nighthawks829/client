@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (user, thunkAPI) => {
-    console.log("Login user");
     return loginUserThunk("auth/login", user, thunkAPI);
   }
 );
@@ -64,27 +63,27 @@ const authSlice = createSlice({
         state.loggedIn = true;
         toast.success(`Login successful! Welcome Back ${user.name}`);
       })
-      .addCase(loginUser.rejected, (state, { payload }) => {
+      .addCase(loginUser.rejected, (state, {payload}) => {
         state.isLoading = false;
         toast.error(payload);
       })
       .addCase(logoutUser.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(logoutUser.fulfilled, (state, payload) => {
+      .addCase(logoutUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.loggedIn = false;
         state.user = null;
         toast.success("Logout successful!");
       })
-      .addCase(logoutUser.rejected, (state, payload) => {
+      .addCase(logoutUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         toast.error(payload);
       })
       .addCase(registerUser.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(registerUser.fulfilled, (state, payload) => {
+      .addCase(registerUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         toast.success("Register User Successfully");
       })
@@ -98,5 +97,5 @@ const authSlice = createSlice({
   }
 });
 
-export const { loggedInUser,refreshUser } = authSlice.actions;
+export const { loggedInUser, refreshUser } = authSlice.actions;
 export default authSlice.reducer;
