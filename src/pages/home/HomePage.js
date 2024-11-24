@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./HomePage.css";
 import { IoMdMore } from "react-icons/io";
 
-import { IoMdArrowDropdown } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTasks } from "../../stores/allTasks/allTasksSlice";
 import { convertDateTime } from "../../utils/convertDateTime";
 import { deleteTask } from "../../stores/task/taskSlice";
+import Cookies from "js-cookie";
 
 function HomePage() {
   const { tasks } = useSelector((store) => store.allTasks);
@@ -20,9 +20,27 @@ function HomePage() {
     return text.length > limit ? `${text.substring(0, limit)}...` : text;
   };
 
-  useEffect(() => {
-    dispatch(getAllTasks());
-  }, []);
+  // async function getTask(){
+  //   const response =await
+  // }
+  // useEffect(() => {
+  //   console.log("Hello World")
+  //   getTask()
+  // }, []);
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     const token = Cookies.get("token");
+  //     console.log("Token in useEffect", token);
+  //     dispatch(getAllTasks());
+  //   }, 5000);
+  //   // Wait for 5 seconds (5000 milliseconds) // Clean up the timer on component unmount
+  //   return () => clearTimeout(timer);
+  // }, [dispatch]);
+
+  useEffect(()=>{
+    dispatch(getAllTasks())
+  },[])
 
   const AddButton = () => {
     return (

@@ -23,6 +23,7 @@ function EditUserProfile() {
 
   useEffect(() => {
     dispatch(getUser(user.userId));
+     // eslint-disable-next-line
   }, []);
 
   const handleUserInput = (e) => {

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
+// import { IoMdArrowDropdown } from "react-icons/io";
 import "./AddTaskPage.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addTask } from "../../stores/task/taskSlice";
 import { useNavigate } from "react-router";
 function AddTaskPage() {
-  const { user } = useSelector((store) => store.auth);
+  // const { user } = useSelector((store) => store.auth);
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();

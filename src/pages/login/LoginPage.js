@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const { user } = useSelector((store) => store.auth);
-  const { loggedIn } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,6 +24,7 @@ function LoginPage() {
       dispatch(loggedInUser({ loggedIn: true }));
       navigate("/");
     }
+    // eslint-disable-next-line
   }, [user]);
 
   return (

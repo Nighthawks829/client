@@ -3,8 +3,8 @@ import { getTokenFromCookies } from "./cookies";
 import { clearAuthStore } from "../stores/auth/authSlice";
 
 const customFetch = axios.create({
-  baseURL: "http://192.168.0.110:3001/api/v1",
-  // baseURL: "http://localhost:3001/api/v1",
+  baseURL: "https://todobackend.nighthawks0230.com/api/v1",
+  // baseURL: "http://192.168.0.110:3001/api/v1",
   withCredentials: true,
 });
 

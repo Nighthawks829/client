@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
+import React, { useEffect } from "react";
+// import { IoMdArrowDropdown } from "react-icons/io";
 import "./EditTaskPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -12,13 +12,14 @@ import { useNavigate, useParams } from "react-router";
 function EditTaskPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { title, message, done, isLoading } = useSelector(
+  const { title, message, done } = useSelector(
     (store) => store.task
   );
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getTask(id));
+     // eslint-disable-next-line
   }, []);
 
   const handleUserInput = (e) => {

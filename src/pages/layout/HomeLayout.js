@@ -93,6 +93,7 @@ function HomeLayout() {
                   </li>
                   <li>
                     <a
+                     // eslint-disable-next-line
                       className="dropdown-item text-danger"
                       data-bs-toggle="modal"
                       data-bs-target="#logoutModal"
